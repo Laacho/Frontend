@@ -45,7 +45,7 @@ function CardVisual({ card }: { card: CardResponse }) {
           <div>
             <p
               className="text-[9px] tracking-[0.2em] uppercase opacity-70"
-              style={{ color: isVirtual ? '#0F2A47' : '#fff', fontFamily: '"Geist Mono", monospace' }}
+              style={{ color: isVirtual ? '#0F2A47' : 'var(--c-surface)', fontFamily: '"Geist Mono", monospace' }}
             >
               Balkan United
             </p>
@@ -70,7 +70,7 @@ function CardVisual({ card }: { card: CardResponse }) {
           <p
             className="text-sm font-medium tracking-widest mb-1"
             style={{
-              color: isVirtual ? '#0F2A47' : '#fff',
+              color: isVirtual ? '#0F2A47' : 'var(--c-surface)',
               fontFamily: '"Geist Mono", monospace',
               opacity: 0.9,
             }}
@@ -80,7 +80,7 @@ function CardVisual({ card }: { card: CardResponse }) {
           <div className="flex items-center justify-between">
             <p
               className="text-[10px] tracking-wider opacity-70"
-              style={{ color: isVirtual ? '#0F2A47' : '#fff', fontFamily: '"Geist Mono", monospace' }}
+              style={{ color: isVirtual ? '#0F2A47' : 'var(--c-surface)', fontFamily: '"Geist Mono", monospace' }}
             >
               {card.expiryDate}
             </p>
@@ -126,9 +126,9 @@ export function CardsPage() {
               onClick={() => setTypeFilter(t)}
               className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors"
               style={{
-                borderColor: typeFilter === t ? '#0F2A47' : '#E5E2D9',
-                backgroundColor: typeFilter === t ? '#0F2A47' : '#fff',
-                color: typeFilter === t ? '#fff' : '#5C6470',
+                borderColor: typeFilter === t ? '#0F2A47' : 'var(--c-border)',
+                backgroundColor: typeFilter === t ? '#0F2A47' : 'var(--c-surface)',
+                color: typeFilter === t ? 'var(--c-surface)' : 'var(--c-text-2)',
                 fontFamily: '"Geist Mono", monospace',
               }}
             >
@@ -139,7 +139,7 @@ export function CardsPage() {
         <Link
           to="/cards/issue"
           className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium"
-          style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+          style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
         >
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
             <line x1="8" y1="2" x2="8" y2="14" />
@@ -157,7 +157,7 @@ export function CardsPage() {
             <Link
               to="/cards/issue"
               className="px-5 py-2.5 rounded-lg text-sm font-medium"
-              style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+              style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
             >
               {t.issueCard}
             </Link>
@@ -181,12 +181,12 @@ export function CardsPage() {
               <CardVisual card={card} />
               <div className="mt-3 px-1">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+                  <p className="text-sm font-medium" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
                     {card.cardType} card
                   </p>
                   <StatusBadge status={card.status} />
                 </div>
-                <p className="text-xs mt-0.5" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+                <p className="text-xs mt-0.5" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
                   Account {card.accountId.slice(0, 8)}…
                 </p>
               </div>

@@ -57,7 +57,7 @@ export function AccountDetailPage() {
       <button
         onClick={() => navigate('/accounts')}
         className="flex items-center gap-1.5 text-sm mb-4 hover:underline"
-        style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+        style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
       >
         ← {t.accounts}
       </button>
@@ -80,7 +80,7 @@ export function AccountDetailPage() {
       <button
         onClick={() => navigate('/accounts')}
         className="flex items-center gap-1.5 text-sm mb-6 hover:underline"
-        style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+        style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
       >
         {t.backToAccounts}
       </button>
@@ -115,7 +115,7 @@ export function AccountDetailPage() {
               </span>
               <span
                 className="text-2xl font-medium"
-                style={{ color: '#fff', fontFamily: 'Fraunces, serif' }}
+                style={{ color: 'var(--c-on-brand)', fontFamily: 'Fraunces, serif' }}
               >
                 {formatAmount(account.balance?.availableAmount || 0)}
               </span>
@@ -156,10 +156,10 @@ export function AccountDetailPage() {
         </div>
 
         {/* Details + controls */}
-        <div className="rounded-xl border p-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+        <div className="rounded-xl border p-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
           <h3
             className="text-base font-semibold mb-4"
-            style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+            style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
           >
             Account details
           </h3>
@@ -172,14 +172,14 @@ export function AccountDetailPage() {
               { label: 'Opened', value: formatDate(account.openedAt) },
               account.branchName && { label: 'Branch', value: account.branchName },
             ].filter(Boolean).map((item: any) => (
-              <div key={item.label} className="flex justify-between items-center py-2 border-b" style={{ borderColor: '#EFEDE6' }}>
-                <span className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <div key={item.label} className="flex justify-between items-center py-2 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+                <span className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                   {item.label}
                 </span>
                 <span
                   className="text-sm font-medium"
                   style={{
-                    color: '#14181F',
+                    color: 'var(--c-text)',
                     fontFamily: item.mono ? '"Geist Mono", monospace' : 'Geist, sans-serif',
                   }}
                 >
@@ -189,15 +189,15 @@ export function AccountDetailPage() {
             ))}
           </div>
 
-          <div className="border-t pt-4 space-y-2" style={{ borderColor: '#EFEDE6' }}>
-            <p className="text-xs font-medium mb-3" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+          <div className="border-t pt-4 space-y-2" style={{ borderColor: 'var(--c-surface-2)' }}>
+            <p className="text-xs font-medium mb-3" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
               ACCOUNT CONTROLS
             </p>
             {canFreeze && (
               <button
                 onClick={() => setModal('freeze')}
                 className="w-full flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-[#FBF1E2]"
-                style={{ borderColor: '#E5E2D9', color: '#B5781E', fontFamily: 'Geist, sans-serif' }}
+                style={{ borderColor: 'var(--c-border)', color: '#B5781E', fontFamily: 'Geist, sans-serif' }}
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
                   <path d="M8 1v14M1 8h14M3.17 3.17l9.66 9.66M12.83 3.17L3.17 12.83" />
@@ -209,7 +209,7 @@ export function AccountDetailPage() {
               <button
                 onClick={() => setModal('unfreeze')}
                 className="w-full flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium"
-                style={{ borderColor: '#E5E2D9', color: '#1F7A4D', fontFamily: 'Geist, sans-serif' }}
+                style={{ borderColor: 'var(--c-border)', color: '#1F7A4D', fontFamily: 'Geist, sans-serif' }}
               >
                 Unfreeze account
               </button>
@@ -218,7 +218,7 @@ export function AccountDetailPage() {
               <button
                 onClick={() => setModal('close')}
                 className="w-full flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition-colors hover:bg-[#FBEDEB]"
-                style={{ borderColor: '#E5E2D9', color: '#A8362F', fontFamily: 'Geist, sans-serif' }}
+                style={{ borderColor: 'var(--c-border)', color: '#A8362F', fontFamily: 'Geist, sans-serif' }}
               >
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
                   <circle cx="8" cy="8" r="6.5" />
@@ -235,9 +235,9 @@ export function AccountDetailPage() {
       {/* Bottom 2-col: cards + transactions */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Cards on account */}
-        <div className="rounded-xl border" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: '#EFEDE6' }}>
-            <h3 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+        <div className="rounded-xl border" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+            <h3 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               Linked cards
             </h3>
             <Link to="/cards/issue" className="text-xs hover:underline" style={{ color: '#C8A878', fontFamily: 'Geist, sans-serif' }}>
@@ -246,7 +246,7 @@ export function AccountDetailPage() {
           </div>
           <div className="p-5">
             {accountCards.length === 0 ? (
-              <p className="text-sm text-center py-4" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <p className="text-sm text-center py-4" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {t.noCardsYet}
               </p>
             ) : (
@@ -256,7 +256,7 @@ export function AccountDetailPage() {
                     key={card.id}
                     to={`/cards/${card.id}`}
                     className="flex items-center gap-3 p-3 rounded-lg border hover:border-[#C8A878] transition-colors"
-                    style={{ borderColor: '#EFEDE6' }}
+                    style={{ borderColor: 'var(--c-surface-2)' }}
                   >
                     <div
                       className="w-8 h-8 rounded flex items-center justify-center text-[10px] font-bold"
@@ -265,10 +265,10 @@ export function AccountDetailPage() {
                       {card.cardType[0]}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+                      <p className="text-sm font-medium" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
                         {card.cardType} card
                       </p>
-                      <p className="text-[11px]" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+                      <p className="text-[11px]" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
                         {card.maskedPan}
                       </p>
                     </div>
@@ -281,9 +281,9 @@ export function AccountDetailPage() {
         </div>
 
         {/* Recent transactions */}
-        <div className="rounded-xl border" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: '#EFEDE6' }}>
-            <h3 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+        <div className="rounded-xl border" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+            <h3 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               Recent transactions
             </h3>
             <Link to="/transactions" className="text-xs hover:underline" style={{ color: '#C8A878', fontFamily: 'Geist, sans-serif' }}>
@@ -292,7 +292,7 @@ export function AccountDetailPage() {
           </div>
           <div className="px-5">
             {transactions.length === 0 ? (
-              <p className="text-sm text-center py-8" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <p className="text-sm text-center py-8" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {t.noTxnsYet}
               </p>
             ) : (
@@ -301,18 +301,18 @@ export function AccountDetailPage() {
                   key={tx.id}
                   to={`/transactions/${tx.id}`}
                   className="flex items-center justify-between py-3 border-b last:border-0 hover:opacity-80"
-                  style={{ borderColor: '#EFEDE6' }}
+                  style={{ borderColor: 'var(--c-surface-2)' }}
                 >
                   <div>
-                    <p className="text-sm font-medium" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+                    <p className="text-sm font-medium" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
                       {tx.description || tx.type}
                     </p>
-                    <p className="text-[11px]" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+                    <p className="text-[11px]" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
                       {formatDateTime(tx.initiatedAt)}
                     </p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-semibold" style={{ color: '#14181F', fontFamily: '"Geist Mono", monospace' }}>
+                    <p className="text-sm font-semibold" style={{ color: 'var(--c-text)', fontFamily: '"Geist Mono", monospace' }}>
                       {formatAmount(tx.amount)} {tx.currency}
                     </p>
                     <StatusBadge status={tx.status} />

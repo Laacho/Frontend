@@ -40,13 +40,13 @@ export function TransactionsPage() {
       {/* Filters */}
       <div
         className="flex flex-wrap gap-3 mb-5 p-4 rounded-xl border"
-        style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+        style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
       >
         <select
           value={accountFilter}
           onChange={e => { setAccountFilter(e.target.value); setPage(0); }}
           className="px-3 py-2 rounded-lg border text-sm outline-none"
-          style={{ borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' }}
+          style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}
         >
           <option value="">All accounts</option>
           {accounts.map(a => (
@@ -58,7 +58,7 @@ export function TransactionsPage() {
           value={typeFilter}
           onChange={e => { setTypeFilter(e.target.value); setPage(0); }}
           className="px-3 py-2 rounded-lg border text-sm outline-none"
-          style={{ borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' }}
+          style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}
         >
           <option value="">All types</option>
           <option value="INTRA_BANK">Intra-bank</option>
@@ -70,7 +70,7 @@ export function TransactionsPage() {
           value={statusFilter}
           onChange={e => { setStatusFilter(e.target.value); setPage(0); }}
           className="px-3 py-2 rounded-lg border text-sm outline-none"
-          style={{ borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' }}
+          style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}
         >
           <option value="">All statuses</option>
           <option value="PENDING">Pending</option>
@@ -86,15 +86,15 @@ export function TransactionsPage() {
         <EmptyState title={t.noTxnsYet} description="Transactions will appear here after your first transfer." />
       ) : (
         <>
-          <div className="rounded-xl border overflow-hidden" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+          <div className="rounded-xl border overflow-hidden" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
             <table className="w-full">
               <thead>
-                <tr style={{ borderBottom: '1px solid #EFEDE6' }}>
+                <tr style={{ borderBottom: '1px solid var(--c-surface-2)' }}>
                   {['Date', 'Description', 'Type', 'Status', 'Amount'].map(h => (
                     <th
                       key={h}
                       className="px-5 py-3 text-left text-[10px] font-semibold tracking-wider uppercase"
-                      style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}
+                      style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}
                     >
                       {h}
                     </th>
@@ -105,21 +105,21 @@ export function TransactionsPage() {
                 {transactions.map(tx => (
                   <tr
                     key={tx.id}
-                    className="border-b last:border-0 hover:bg-[#FAF8F2] cursor-pointer transition-colors"
-                    style={{ borderColor: '#EFEDE6' }}
+                    className="border-b last:border-0 hover:bg-[var(--c-surface-alt)] cursor-pointer transition-colors"
+                    style={{ borderColor: 'var(--c-surface-2)' }}
                     onClick={() => window.location.href = `/transactions/${tx.id}`}
                   >
                     <td className="px-5 py-3">
-                      <p className="text-xs" style={{ color: '#5C6470', fontFamily: '"Geist Mono", monospace' }}>
+                      <p className="text-xs" style={{ color: 'var(--c-text-2)', fontFamily: '"Geist Mono", monospace' }}>
                         {formatDateTime(tx.initiatedAt)}
                       </p>
                     </td>
                     <td className="px-5 py-3">
-                      <p className="text-sm font-medium" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+                      <p className="text-sm font-medium" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
                         {tx.description || tx.merchantName || tx.type}
                       </p>
                       {tx.reference && (
-                        <p className="text-[11px]" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+                        <p className="text-[11px]" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
                           {tx.reference}
                         </p>
                       )}
@@ -127,7 +127,7 @@ export function TransactionsPage() {
                     <td className="px-5 py-3">
                       <span
                         className="text-[11px] px-2 py-0.5 rounded"
-                        style={{ backgroundColor: '#EFEDE6', color: '#5C6470', fontFamily: '"Geist Mono", monospace' }}
+                        style={{ backgroundColor: 'var(--c-surface-2)', color: 'var(--c-text-2)', fontFamily: '"Geist Mono", monospace' }}
                       >
                         {tx.type}
                       </span>
@@ -139,7 +139,7 @@ export function TransactionsPage() {
                       <p
                         className="text-sm font-semibold"
                         style={{
-                          color: tx.status === 'FAILED' ? '#A8362F' : '#14181F',
+                          color: tx.status === 'FAILED' ? '#A8362F' : 'var(--c-text)',
                           fontFamily: '"Geist Mono", monospace',
                         }}
                       >
@@ -155,7 +155,7 @@ export function TransactionsPage() {
           {/* Pagination */}
           {data && data.totalPages > 1 && (
             <div className="flex items-center justify-between mt-4">
-              <p className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <p className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {t.page} {(data.number || 0) + 1} {t.of} {data.totalPages}
               </p>
               <div className="flex gap-2">
@@ -163,7 +163,7 @@ export function TransactionsPage() {
                   onClick={() => setPage(p => Math.max(0, p - 1))}
                   disabled={data.first}
                   className="px-3 py-1.5 rounded-lg border text-xs disabled:opacity-40"
-                  style={{ borderColor: '#E5E2D9', color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+                  style={{ borderColor: 'var(--c-border)', color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
                 >
                   {t.prev}
                 </button>
@@ -171,7 +171,7 @@ export function TransactionsPage() {
                   onClick={() => setPage(p => p + 1)}
                   disabled={data.last}
                   className="px-3 py-1.5 rounded-lg border text-xs disabled:opacity-40"
-                  style={{ borderColor: '#E5E2D9', color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+                  style={{ borderColor: 'var(--c-border)', color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
                 >
                   {t.next}
                 </button>

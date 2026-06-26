@@ -19,7 +19,7 @@ export function ErrorBanner({ message, onRetry, className = '' }: ErrorBannerPro
     >
       <div
         className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold mt-0.5"
-        style={{ backgroundColor: '#A8362F', color: '#fff' }}
+        style={{ backgroundColor: '#A8362F', color: 'var(--c-on-brand)' }}
       >
         !
       </div>

@@ -8,7 +8,7 @@ interface AppShellProps {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F4F2EC' }}>
+    <div className="min-h-screen" style={{ backgroundColor: 'var(--c-bg)' }}>
       <Sidebar />
       <Topbar />
       <main

@@ -72,6 +72,7 @@ export interface CardResponse {
   limits: CardLimits;
   issuedAt: string;
   updatedAt: string;
+  pinSet: boolean;
 }
 
 export interface CardTransactionResponse {

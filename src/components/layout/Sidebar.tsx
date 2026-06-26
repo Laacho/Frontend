@@ -31,7 +31,7 @@ function NavSection({ label, items }: { label: string; items: NavItem[] }) {
           }
           style={({ isActive }) => ({
             backgroundColor: isActive ? '#173A5E' : undefined,
-            color: isActive ? '#ffffff' : '#C8D5E5',
+            color: isActive ? 'var(--c-surface)' : '#C8D5E5',
             fontFamily: 'Geist, sans-serif',
           })}
         >
@@ -245,7 +245,7 @@ export function Sidebar() {
                 }
                 style={({ isActive }) => ({
                   backgroundColor: isActive ? '#173A5E' : undefined,
-                  color: isActive ? '#ffffff' : '#C8D5E5',
+                  color: isActive ? 'var(--c-surface)' : '#C8D5E5',
                   fontFamily: 'Geist, sans-serif',
                 })}
               >

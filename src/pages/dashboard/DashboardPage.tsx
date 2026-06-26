@@ -13,13 +13,13 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
   const isFirst = index === 0;
   return (
     <Link to={`/accounts/${account.id}`} className="block rounded-xl border overflow-hidden hover:border-[#C8A878] transition-colors"
-      style={{ borderColor: isFirst ? 'transparent' : '#E5E2D9' }}>
+      style={{ borderColor: isFirst ? 'transparent' : 'var(--c-border)' }}>
       <div
         className="p-5 h-full"
         style={{
           background: isFirst
             ? 'linear-gradient(135deg, #0F2A47 0%, #173A5E 100%)'
-            : '#fff',
+            : 'var(--c-surface)',
         }}
       >
         <div className="flex items-start justify-between mb-4">
@@ -27,7 +27,7 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
             <p
               className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-1"
               style={{
-                color: isFirst ? '#C8A878' : '#8A8F99',
+                color: isFirst ? '#C8A878' : 'var(--c-text-muted)',
                 fontFamily: '"Geist Mono", monospace',
               }}
             >
@@ -38,8 +38,8 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
           <div
             className="w-8 h-8 rounded flex items-center justify-center text-xs font-bold"
             style={{
-              backgroundColor: isFirst ? 'rgba(200,168,120,0.15)' : '#F4F2EC',
-              color: isFirst ? '#C8A878' : '#5C6470',
+              backgroundColor: isFirst ? 'rgba(200,168,120,0.15)' : 'var(--c-bg)',
+              color: isFirst ? '#C8A878' : 'var(--c-text-2)',
               fontFamily: 'Fraunces, serif',
             }}
           >
@@ -52,7 +52,7 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
             className="text-3xl font-medium leading-tight"
             style={{
               fontFamily: 'Fraunces, serif',
-              color: isFirst ? '#fff' : '#14181F',
+              color: isFirst ? 'var(--c-surface)' : 'var(--c-text)',
             }}
           >
             {formatAmount(account.balance?.availableAmount || 0)}
@@ -60,7 +60,7 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
           <p
             className="text-sm mt-0.5"
             style={{
-              color: isFirst ? 'rgba(200,216,229,0.7)' : '#5C6470',
+              color: isFirst ? 'rgba(200,216,229,0.7)' : 'var(--c-text-2)',
               fontFamily: 'Geist, sans-serif',
             }}
           >
@@ -71,7 +71,7 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
         <p
           className="text-[11px] tracking-wider truncate"
           style={{
-            color: isFirst ? 'rgba(200,216,229,0.5)' : '#8A8F99',
+            color: isFirst ? 'rgba(200,216,229,0.5)' : 'var(--c-text-muted)',
             fontFamily: '"Geist Mono", monospace',
           }}
         >
@@ -84,14 +84,14 @@ function AccountCard({ account, index }: { account: AccountResponse; index: numb
 
 function SkeletonCard() {
   return (
-    <div className="rounded-xl border p-5 animate-bub-pulse" style={{ borderColor: '#E5E2D9', backgroundColor: '#fff' }}>
+    <div className="rounded-xl border p-5 animate-bub-pulse" style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)' }}>
       <div className="flex justify-between mb-4">
-        <div className="h-4 w-20 rounded" style={{ backgroundColor: '#EFEDE6' }} />
-        <div className="h-6 w-12 rounded" style={{ backgroundColor: '#EFEDE6' }} />
+        <div className="h-4 w-20 rounded" style={{ backgroundColor: 'var(--c-surface-2)' }} />
+        <div className="h-6 w-12 rounded" style={{ backgroundColor: 'var(--c-surface-2)' }} />
       </div>
-      <div className="h-8 w-32 rounded mb-2" style={{ backgroundColor: '#EFEDE6' }} />
-      <div className="h-4 w-16 rounded mb-4" style={{ backgroundColor: '#EFEDE6' }} />
-      <div className="h-3 w-40 rounded" style={{ backgroundColor: '#EFEDE6' }} />
+      <div className="h-8 w-32 rounded mb-2" style={{ backgroundColor: 'var(--c-surface-2)' }} />
+      <div className="h-4 w-16 rounded mb-4" style={{ backgroundColor: 'var(--c-surface-2)' }} />
+      <div className="h-3 w-40 rounded" style={{ backgroundColor: 'var(--c-surface-2)' }} />
     </div>
   );
 }
@@ -101,15 +101,15 @@ function QuickAction({ to, icon, label }: { to: string; icon: React.ReactNode; l
     <Link
       to={to}
       className="flex flex-col items-center gap-2 p-4 rounded-xl border hover:border-[#C8A878] transition-colors"
-      style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+      style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
     >
       <div
         className="w-10 h-10 rounded-lg flex items-center justify-center"
-        style={{ backgroundColor: '#F4F2EC', color: '#0F2A47' }}
+        style={{ backgroundColor: 'var(--c-bg)', color: '#0F2A47' }}
       >
         {icon}
       </div>
-      <span className="text-xs font-medium text-center" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+      <span className="text-xs font-medium text-center" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
         {label}
       </span>
     </Link>
@@ -119,12 +119,12 @@ function QuickAction({ to, icon, label }: { to: string; icon: React.ReactNode; l
 function TxRow({ tx }: { tx: TransactionResponse }) {
   const isCredit = tx.type === 'INTRA_BANK' || tx.type === 'INTER_BANK';
   return (
-    <div className="flex items-center gap-3 py-3 border-b last:border-0" style={{ borderColor: '#EFEDE6' }}>
+    <div className="flex items-center gap-3 py-3 border-b last:border-0" style={{ borderColor: 'var(--c-surface-2)' }}>
       <div
         className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-        style={{ backgroundColor: '#F4F2EC' }}
+        style={{ backgroundColor: 'var(--c-bg)' }}
       >
-        <svg viewBox="0 0 16 16" fill="none" stroke="#5C6470" strokeWidth="1.5" className="w-4 h-4">
+        <svg viewBox="0 0 16 16" fill="none" stroke="var(--c-text-2)" strokeWidth="1.5" className="w-4 h-4">
           {isCredit
             ? <path d="M8 12V4M5 7l3-3 3 3" />
             : <path d="M8 4v8M5 9l3 3 3-3" />
@@ -132,10 +132,10 @@ function TxRow({ tx }: { tx: TransactionResponse }) {
         </svg>
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium truncate" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm font-medium truncate" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
           {tx.description || tx.merchantName || tx.type}
         </p>
-        <p className="text-[11px]" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+        <p className="text-[11px]" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
           {formatDateTime(tx.initiatedAt)}
         </p>
       </div>
@@ -143,7 +143,7 @@ function TxRow({ tx }: { tx: TransactionResponse }) {
         <p
           className="text-sm font-semibold"
           style={{
-            color: tx.status === 'FAILED' ? '#A8362F' : '#14181F',
+            color: tx.status === 'FAILED' ? '#A8362F' : 'var(--c-text)',
             fontFamily: '"Geist Mono", monospace',
           }}
         >
@@ -160,21 +160,21 @@ function NotifRow({ n }: { n: NotificationResponse }) {
   return (
     <div
       className="flex items-start gap-3 py-3 border-b last:border-0"
-      style={{ borderColor: '#EFEDE6', backgroundColor: isUnread ? '#FAF8F2' : undefined }}
+      style={{ borderColor: 'var(--c-surface-2)', backgroundColor: isUnread ? 'var(--c-surface-alt)' : undefined }}
     >
       {isUnread && (
         <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: '#C8A878' }} />
       )}
       {!isUnread && <div className="w-1.5 flex-shrink-0" />}
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium truncate" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm font-medium truncate" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
           {n.title}
         </p>
-        <p className="text-xs truncate" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-xs truncate" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
           {n.message}
         </p>
       </div>
-      <span className="text-[10px] flex-shrink-0" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+      <span className="text-[10px] flex-shrink-0" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
         {formatRelativeTime(n.createdAt)}
       </span>
     </div>
@@ -210,7 +210,7 @@ export function DashboardPage() {
         {errorAccounts ? (
           <div
             className="p-6 rounded-xl border text-center"
-            style={{ borderColor: '#E5E2D9', backgroundColor: '#fff' }}
+            style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)' }}
           >
             <p className="text-sm mb-3" style={{ color: '#A8362F', fontFamily: 'Geist, sans-serif' }}>
               Could not load accounts.
@@ -230,24 +230,24 @@ export function DashboardPage() {
         ) : accounts.length === 0 ? (
           <div
             className="flex flex-col items-center py-16 rounded-xl border-2 border-dashed"
-            style={{ borderColor: '#E5E2D9', backgroundColor: '#fff' }}
+            style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)' }}
           >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: '#F4F2EC' }}>
+            <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: 'var(--c-bg)' }}>
               <svg viewBox="0 0 24 24" fill="none" stroke="#C8A878" strokeWidth="1.5" className="w-6 h-6">
                 <rect x="2" y="5" width="20" height="14" rx="2" />
                 <line x1="2" y1="10" x2="22" y2="10" />
               </svg>
             </div>
-            <h3 className="text-lg font-medium mb-2" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+            <h3 className="text-lg font-medium mb-2" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               {t.noAccountsYet}
             </h3>
-            <p className="text-sm mb-6" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+            <p className="text-sm mb-6" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
               Open your first account to get started.
             </p>
             <Link
               to="/accounts/open"
               className="px-5 py-2.5 rounded-lg text-sm font-medium"
-              style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+              style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
             >
               {t.openAccount}
             </Link>
@@ -261,7 +261,7 @@ export function DashboardPage() {
 
       {/* Quick actions */}
       <section className="mb-6">
-        <h2 className="text-base font-semibold mb-3" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+        <h2 className="text-base font-semibold mb-3" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
           {t.quickActions}
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -315,9 +315,9 @@ export function DashboardPage() {
       {/* Bottom 2-col grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Recent activity */}
-        <div className="rounded-xl border" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: '#EFEDE6' }}>
-            <h2 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+        <div className="rounded-xl border" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+            <h2 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               {t.recentActivity}
             </h2>
             <Link
@@ -334,7 +334,7 @@ export function DashboardPage() {
                 <div className="w-5 h-5 rounded-full border-2 border-[#C8A878] border-t-transparent animate-bub-spin mx-auto" />
               </div>
             ) : transactions.length === 0 ? (
-              <p className="py-8 text-center text-sm" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <p className="py-8 text-center text-sm" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {t.noTxnsYet}
               </p>
             ) : (
@@ -344,9 +344,9 @@ export function DashboardPage() {
         </div>
 
         {/* Notifications panel */}
-        <div className="rounded-xl border" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: '#EFEDE6' }}>
-            <h2 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+        <div className="rounded-xl border" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+          <div className="flex items-center justify-between px-5 py-4 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+            <h2 className="text-sm font-semibold" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               {t.notifications}
             </h2>
             <Link
@@ -363,7 +363,7 @@ export function DashboardPage() {
                 <div className="w-5 h-5 rounded-full border-2 border-[#C8A878] border-t-transparent animate-bub-spin mx-auto" />
               </div>
             ) : notifications.length === 0 ? (
-              <p className="py-8 text-center text-sm" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <p className="py-8 text-center text-sm" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {t.noNotifications}
               </p>
             ) : (

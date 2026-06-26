@@ -18,7 +18,7 @@ function PasswordStrength({ password }: { password: string }) {
   };
 
   const strength = getStrength(password);
-  const colors = ['#E5E2D9', '#A8362F', '#B5781E', '#C8A878', '#1F7A4D'];
+  const colors = ['var(--c-border)', '#A8362F', '#B5781E', '#C8A878', '#1F7A4D'];
   const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
 
   if (!password) return null;
@@ -30,7 +30,7 @@ function PasswordStrength({ password }: { password: string }) {
           <div
             key={i}
             className="h-1 flex-1 rounded-full transition-colors"
-            style={{ backgroundColor: i <= strength ? colors[strength] : '#E5E2D9' }}
+            style={{ backgroundColor: i <= strength ? colors[strength] : 'var(--c-border)' }}
           />
         ))}
       </div>
@@ -46,7 +46,7 @@ function FormSection({ label, children }: { label: string; children: React.React
     <div className="mb-6">
       <p
         className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-3 pb-2 border-b"
-        style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace', borderColor: '#EFEDE6' }}
+        style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace', borderColor: 'var(--c-surface-2)' }}
       >
         {label}
       </p>
@@ -60,7 +60,7 @@ function Field({ label, error, children }: { label: string; error?: string; chil
     <div>
       <label
         className="block text-xs font-medium mb-1.5"
-        style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+        style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
       >
         {label}
       </label>
@@ -73,9 +73,9 @@ function Field({ label, error, children }: { label: string; error?: string; chil
 }
 
 const inputStyle = {
-  borderColor: '#E5E2D9',
-  backgroundColor: '#fff',
-  color: '#14181F',
+  borderColor: 'var(--c-border)',
+  backgroundColor: 'var(--c-surface)',
+  color: 'var(--c-text)',
   fontFamily: 'Geist, sans-serif',
 };
 
@@ -145,7 +145,7 @@ export function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4" style={{ backgroundColor: '#F4F2EC' }}>
+    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4" style={{ backgroundColor: 'var(--c-bg)' }}>
       {/* Logo */}
       <div className="flex items-center gap-3 mb-8">
         <div
@@ -154,22 +154,22 @@ export function RegisterPage() {
         >
           B
         </div>
-        <span style={{ fontFamily: 'Fraunces, serif', color: '#14181F', fontSize: '20px' }}>
+        <span style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)', fontSize: '20px' }}>
           Balkan United Bank
         </span>
       </div>
 
       <div
         className="w-full max-w-2xl rounded-xl border p-8"
-        style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+        style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
       >
         <h1
           className="text-2xl font-medium mb-1"
-          style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+          style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
         >
           Create your account
         </h1>
-        <p className="text-sm mb-8" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm mb-8" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
           Join Balkan United Bank — it takes about 2 minutes.
         </p>
 
@@ -236,7 +236,7 @@ export function RegisterPage() {
                   style={{ ...inputStyle, fontFamily: '"Geist Mono", monospace' }}
                   placeholder="0000000000"
                 />
-                <p className="text-[11px] mt-1" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+                <p className="text-[11px] mt-1" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                   10-digit Bulgarian personal number
                 </p>
               </Field>
@@ -305,7 +305,7 @@ export function RegisterPage() {
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
                     className="absolute right-3 top-1/2 -translate-y-1/2"
-                    style={{ color: '#8A8F99' }}
+                    style={{ color: 'var(--c-text-muted)' }}
                   >
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
                       <path d="M2 8s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z" />
@@ -331,11 +331,11 @@ export function RegisterPage() {
             </div>
           </FormSection>
 
-          <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: '#EFEDE6' }}>
+          <div className="flex items-center justify-between pt-4 border-t" style={{ borderColor: 'var(--c-surface-2)' }}>
             <Link
               to="/login"
               className="text-sm hover:underline"
-              style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+              style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
             >
               Already have an account? Sign in
             </Link>
@@ -343,7 +343,7 @@ export function RegisterPage() {
               type="submit"
               disabled={loading}
               className="px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-opacity disabled:opacity-60"
-              style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+              style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
             >
               {loading && <Spinner size="sm" className="text-white" />}
               Continue

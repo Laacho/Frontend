@@ -63,21 +63,21 @@ export function OpenAccountPage() {
       <button
         onClick={() => navigate('/accounts')}
         className="flex items-center gap-1.5 text-sm mb-6 hover:underline"
-        style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+        style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
       >
         ← {t.accounts}
       </button>
 
       {error && <ErrorBanner message={error} className="mb-4" />}
 
-      <div className="rounded-xl border p-8" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+      <div className="rounded-xl border p-8" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
         <h2
           className="text-xl font-semibold mb-1"
-          style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+          style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
         >
           Open a new account
         </h2>
-        <p className="text-sm mb-8" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm mb-8" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
           Choose the account type that fits your needs.
         </p>
 
@@ -85,7 +85,7 @@ export function OpenAccountPage() {
         <div className="mb-6">
           <p
             className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-3 pb-2 border-b"
-            style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace', borderColor: '#EFEDE6' }}
+            style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace', borderColor: 'var(--c-surface-2)' }}
           >
             Account type
           </p>
@@ -96,26 +96,26 @@ export function OpenAccountPage() {
                 onClick={() => setAccountType(type.value)}
                 className="p-4 rounded-lg border text-left transition-colors"
                 style={{
-                  borderColor: accountType === type.value ? '#0F2A47' : '#E5E2D9',
-                  backgroundColor: accountType === type.value ? '#F4F2EC' : '#fff',
+                  borderColor: accountType === type.value ? '#0F2A47' : 'var(--c-border)',
+                  backgroundColor: accountType === type.value ? 'var(--c-bg)' : 'var(--c-surface)',
                 }}
               >
                 <div
                   className="w-8 h-8 rounded-lg flex items-center justify-center text-base mb-3"
                   style={{
-                    backgroundColor: accountType === type.value ? '#0F2A47' : '#F4F2EC',
-                    color: accountType === type.value ? '#C8A878' : '#5C6470',
+                    backgroundColor: accountType === type.value ? '#0F2A47' : 'var(--c-bg)',
+                    color: accountType === type.value ? '#C8A878' : 'var(--c-text-2)',
                   }}
                 >
                   {type.icon}
                 </div>
                 <p
                   className="text-sm font-semibold mb-1"
-                  style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}
+                  style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}
                 >
                   {type.label}
                 </p>
-                <p className="text-xs leading-relaxed" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                   {type.description}
                 </p>
               </button>
@@ -128,7 +128,7 @@ export function OpenAccountPage() {
           <div>
             <label
               className="block text-xs font-medium mb-1.5"
-              style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+              style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
             >
               {t.currency}
             </label>
@@ -137,9 +137,9 @@ export function OpenAccountPage() {
               onChange={e => setCurrency(e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none"
               style={{
-                borderColor: '#E5E2D9',
-                backgroundColor: '#fff',
-                color: '#14181F',
+                borderColor: 'var(--c-border)',
+                backgroundColor: 'var(--c-surface)',
+                color: 'var(--c-text)',
                 fontFamily: '"Geist Mono", monospace',
               }}
             >
@@ -152,7 +152,7 @@ export function OpenAccountPage() {
           <div>
             <label
               className="block text-xs font-medium mb-1.5"
-              style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+              style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
             >
               {t.branch}
             </label>
@@ -161,9 +161,9 @@ export function OpenAccountPage() {
               onChange={e => setBranchName(e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none"
               style={{
-                borderColor: '#E5E2D9',
-                backgroundColor: '#fff',
-                color: '#14181F',
+                borderColor: 'var(--c-border)',
+                backgroundColor: 'var(--c-surface)',
+                color: 'var(--c-text)',
                 fontFamily: 'Geist, sans-serif',
               }}
             >
@@ -177,14 +177,14 @@ export function OpenAccountPage() {
         {/* Info note */}
         <div
           className="flex items-start gap-3 p-4 rounded-lg mb-8"
-          style={{ backgroundColor: '#F4F2EC', border: '1px solid #E5E2D9' }}
+          style={{ backgroundColor: 'var(--c-bg)', border: '1px solid var(--c-border)' }}
         >
-          <svg viewBox="0 0 16 16" fill="none" stroke="#5C6470" strokeWidth="1.5" className="w-4 h-4 mt-0.5 flex-shrink-0">
+          <svg viewBox="0 0 16 16" fill="none" stroke="var(--c-text-2)" strokeWidth="1.5" className="w-4 h-4 mt-0.5 flex-shrink-0">
             <circle cx="8" cy="8" r="6.5" />
             <line x1="8" y1="7" x2="8" y2="11" />
             <circle cx="8" cy="5" r="0.5" fill="currentColor" />
           </svg>
-          <p className="text-xs" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+          <p className="text-xs" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
             New accounts start with a zero balance. Transfer funds from an external account to start transacting.
           </p>
         </div>
@@ -193,7 +193,7 @@ export function OpenAccountPage() {
           <button
             onClick={() => navigate('/accounts')}
             className="px-4 py-2.5 rounded-lg text-sm font-medium border"
-            style={{ borderColor: '#E5E2D9', color: '#5C6470', backgroundColor: '#fff', fontFamily: 'Geist, sans-serif' }}
+            style={{ borderColor: 'var(--c-border)', color: 'var(--c-text-2)', backgroundColor: 'var(--c-surface)', fontFamily: 'Geist, sans-serif' }}
           >
             {t.cancel}
           </button>
@@ -201,7 +201,7 @@ export function OpenAccountPage() {
             onClick={() => mutation.mutate()}
             disabled={mutation.isPending}
             className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
-            style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+            style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
           >
             {mutation.isPending && <Spinner size="sm" className="text-white" />}
             Open account

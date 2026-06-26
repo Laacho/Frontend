@@ -43,7 +43,7 @@ export function AdminBulkPage() {
     mutation.mutate();
   }
 
-  const inputStyle = { borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' };
+  const inputStyle = { borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' };
 
   return (
     <div className="animate-bub-fade">
@@ -56,11 +56,11 @@ export function AdminBulkPage() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Form */}
         <div className="lg:col-span-3">
-          <div className="rounded-xl border p-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-            <h2 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+          <div className="rounded-xl border p-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+            <h2 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               Bulk send
             </h2>
-            <p className="text-sm mb-6" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+            <p className="text-sm mb-6" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
               Send a notification to multiple specific users.
             </p>
 
@@ -74,7 +74,7 @@ export function AdminBulkPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Recipients */}
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                   Recipients
                 </label>
                 <div className="flex gap-2">
@@ -91,7 +91,7 @@ export function AdminBulkPage() {
                     type="button"
                     onClick={addRecipient}
                     className="px-3 py-2.5 rounded-lg border text-sm"
-                    style={{ borderColor: '#E5E2D9', color: '#0F2A47', fontFamily: 'Geist, sans-serif' }}
+                    style={{ borderColor: 'var(--c-border)', color: '#0F2A47', fontFamily: 'Geist, sans-serif' }}
                   >
                     Add
                   </button>
@@ -102,14 +102,14 @@ export function AdminBulkPage() {
                       <span
                         key={r}
                         className="flex items-center gap-1.5 px-2 py-1 rounded-full text-xs"
-                        style={{ backgroundColor: '#F4F2EC', border: '1px solid #E5E2D9', fontFamily: '"Geist Mono", monospace', color: '#14181F' }}
+                        style={{ backgroundColor: 'var(--c-bg)', border: '1px solid var(--c-border)', fontFamily: '"Geist Mono", monospace', color: 'var(--c-text)' }}
                       >
                         {r.slice(0, 8)}…
                         <button
                           type="button"
                           onClick={() => removeRecipient(r)}
                           className="hover:text-red-500"
-                          style={{ color: '#8A8F99' }}
+                          style={{ color: 'var(--c-text-muted)' }}
                         >
                           ×
                         </button>
@@ -120,18 +120,18 @@ export function AdminBulkPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Title</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Title</label>
                 <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="System maintenance notice" className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={inputStyle} />
               </div>
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Message</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Message</label>
                 <textarea value={message} onChange={e => setMessage(e.target.value)} rows={4} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none resize-none" style={inputStyle} />
               </div>
               <button
                 type="submit"
                 disabled={mutation.isPending || recipients.length === 0}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
-                style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+                style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
               >
                 {mutation.isPending && <Spinner size="sm" className="text-white" />}
                 Send to {recipients.length} user{recipients.length !== 1 ? 's' : ''}
@@ -142,8 +142,8 @@ export function AdminBulkPage() {
 
         {/* Right panel */}
         <div className="lg:col-span-2">
-          <div className="rounded-xl border p-5" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-            <p className="text-xs font-semibold mb-3" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+          <div className="rounded-xl border p-5" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+            <p className="text-xs font-semibold mb-3" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
               AUDIENCE
             </p>
             <div className="space-y-3">
@@ -155,12 +155,12 @@ export function AdminBulkPage() {
               ].map(filter => (
                 <label key={filter.label} className="flex items-center gap-3 cursor-pointer">
                   <input type="checkbox" defaultChecked={filter.checked} className="rounded" />
-                  <span className="text-sm" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>{filter.label}</span>
+                  <span className="text-sm" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>{filter.label}</span>
                 </label>
               ))}
             </div>
-            <div className="mt-4 pt-4 border-t" style={{ borderColor: '#EFEDE6' }}>
-              <p className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+            <div className="mt-4 pt-4 border-t" style={{ borderColor: 'var(--c-surface-2)' }}>
+              <p className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {recipients.length} recipient{recipients.length !== 1 ? 's' : ''} manually specified above.
                 Audience filters are informational only — recipients are those added by ID.
               </p>

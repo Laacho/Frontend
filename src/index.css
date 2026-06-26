@@ -1,10 +1,43 @@
 @import "tailwindcss";
+/* Tailwind v4 ignores tailwind.config.js unless explicitly linked. Without this,
+   the custom keyframes (bub-spin/pulse/fade) and colors never generate — the
+   loading spinner's `animate-bub-spin` becomes a no-op and sits static. */
+@config "../tailwind.config.js";
 
+/* ── Theme tokens ──────────────────────────────────────────────
+   Neutral surface/text/border colors are themed; brand (navy/copper)
+   and status colors stay constant. --c-on-brand is white in BOTH
+   themes (text/icons sitting on brand-colored backgrounds). */
 :root {
-  --ground: #F4F2EC;
-  --text: #14181F;
+  --c-bg: #F4F2EC;
+  --c-surface: #FFFFFF;
+  --c-surface-2: #EFEDE6;
+  --c-surface-alt: #FAF8F2;
+  --c-border: #E5E2D9;
+  --c-text: #14181F;
+  --c-text-2: #5C6470;
+  --c-text-muted: #8A8F99;
+  --c-on-brand: #FFFFFF;
+
+  /* legacy aliases */
+  --ground: var(--c-bg);
+  --text: var(--c-text);
   --accent: #C8A878;
   --accent-2: #0F2A47;
+  color-scheme: light;
+}
+
+html.dark {
+  --c-bg: #0F1115;
+  --c-surface: #181B21;
+  --c-surface-2: #232830;
+  --c-surface-alt: #14171C;
+  --c-border: #2C313A;
+  --c-text: #E8E6E0;
+  --c-text-2: #AAB0BA;
+  --c-text-muted: #7C828D;
+  --c-on-brand: #FFFFFF;
+  color-scheme: dark;
 }
 
 * {
@@ -15,12 +48,17 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--ground);
-  color: var(--text);
+  background-color: var(--c-bg);
+  color: var(--c-text);
   font-family: 'Geist', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* Smooth theme transition on the common surface props. */
+body, body * {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 #root {

@@ -21,7 +21,7 @@ export function TwoFASetupPage() {
   const error = queryError ? getApiError(queryError) : '';
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4" style={{ backgroundColor: '#F4F2EC' }}>
+    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4" style={{ backgroundColor: 'var(--c-bg)' }}>
       <div className="flex items-center gap-3 mb-8">
         <div
           className="w-9 h-9 flex items-center justify-center rounded border font-bold text-lg"
@@ -29,14 +29,14 @@ export function TwoFASetupPage() {
         >
           B
         </div>
-        <span style={{ fontFamily: 'Fraunces, serif', color: '#14181F', fontSize: '20px' }}>
+        <span style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)', fontSize: '20px' }}>
           Balkan United Bank
         </span>
       </div>
 
       <div
         className="w-full max-w-md rounded-xl border p-8 text-center"
-        style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+        style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
       >
         <div
           className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
@@ -49,11 +49,11 @@ export function TwoFASetupPage() {
 
         <h1
           className="text-2xl font-medium mb-2"
-          style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+          style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
         >
           Set up two-factor authentication
         </h1>
-        <p className="text-sm mb-8" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm mb-8" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
           Scan the QR code below with your authenticator app (Google Authenticator, Authy, etc.)
         </p>
 
@@ -75,24 +75,24 @@ export function TwoFASetupPage() {
                 src={`data:image/png;base64,${data.qrImageBase64}`}
                 alt="QR Code for 2FA setup"
                 className="w-48 h-48 border rounded-lg p-2"
-                style={{ borderColor: '#E5E2D9' }}
+                style={{ borderColor: 'var(--c-border)' }}
               />
             </div>
 
             <div className="mb-8">
               <p
                 className="text-[10px] tracking-[0.14em] uppercase mb-2"
-                style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}
+                style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}
               >
                 Manual entry code
               </p>
               <div
                 className="px-4 py-3 rounded-lg text-sm select-all cursor-text"
                 style={{
-                  backgroundColor: '#F4F2EC',
-                  border: '1px solid #E5E2D9',
+                  backgroundColor: 'var(--c-bg)',
+                  border: '1px solid var(--c-border)',
                   fontFamily: '"Geist Mono", monospace',
-                  color: '#14181F',
+                  color: 'var(--c-text)',
                   letterSpacing: '0.1em',
                 }}
               >
@@ -107,9 +107,9 @@ export function TwoFASetupPage() {
             onClick={() => navigate('/dashboard')}
             className="flex-1 py-2.5 rounded-lg text-sm font-medium border transition-colors"
             style={{
-              borderColor: '#E5E2D9',
-              color: '#5C6470',
-              backgroundColor: '#fff',
+              borderColor: 'var(--c-border)',
+              color: 'var(--c-text-2)',
+              backgroundColor: 'var(--c-surface)',
               fontFamily: 'Geist, sans-serif',
             }}
           >
@@ -118,7 +118,7 @@ export function TwoFASetupPage() {
           <button
             onClick={() => navigate('/2fa/verify')}
             className="flex-1 py-2.5 rounded-lg text-sm font-medium"
-            style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+            style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
           >
             I've added it →
           </button>

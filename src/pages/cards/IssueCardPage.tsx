@@ -15,7 +15,7 @@ const CARD_TYPES = [
     description: 'Spend your available balance directly. No credit.',
     icon: '↔',
     bg: 'linear-gradient(135deg, #0F2A47 0%, #173A5E 100%)',
-    textColor: '#fff',
+    textColor: 'var(--c-surface)',
   },
   {
     value: 'CREDIT',
@@ -23,7 +23,7 @@ const CARD_TYPES = [
     description: 'Revolving credit line, repaid monthly.',
     icon: '◈',
     bg: 'linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%)',
-    textColor: '#fff',
+    textColor: 'var(--c-surface)',
   },
   {
     value: 'VIRTUAL',
@@ -42,6 +42,8 @@ export function IssueCardPage() {
 
   const [accountId, setAccountId] = useState('');
   const [cardType, setCardType] = useState('DEBIT');
+  const [pin, setPin] = useState('');
+  const [confirmPin, setConfirmPin] = useState('');
   const [error, setError] = useState('');
 
   const { data: accountsData } = useQuery({
@@ -50,7 +52,7 @@ export function IssueCardPage() {
   });
 
   const mutation = useMutation({
-    mutationFn: () => cardsApi.create({ accountId, cardType }),
+    mutationFn: () => cardsApi.create({ accountId, cardType, pin }),
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ['cards'] });
       navigate(`/cards/${data.id}`);
@@ -68,6 +70,14 @@ export function IssueCardPage() {
       setError('Select an account to link this card to');
       return;
     }
+    if (!/^\d{4}$/.test(pin)) {
+      setError('PIN must be exactly 4 digits');
+      return;
+    }
+    if (pin !== confirmPin) {
+      setError('PINs do not match');
+      return;
+    }
     setError('');
     mutation.mutate();
   }
@@ -77,30 +87,30 @@ export function IssueCardPage() {
       <button
         onClick={() => navigate('/cards')}
         className="flex items-center gap-1.5 text-sm mb-6 hover:underline"
-        style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+        style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
       >
         {t.backToCards}
       </button>
 
-      <div className="rounded-xl border p-8" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-        <h2 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+      <div className="rounded-xl border p-8" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+        <h2 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
           {t.issueCard}
         </h2>
-        <p className="text-sm mb-8" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm mb-8" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
           Link a new card to one of your active accounts.
         </p>
 
         <form onSubmit={handleSubmit}>
           {/* Source account */}
           <div className="mb-6">
-            <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+            <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
               Source account
             </label>
             <select
               value={accountId}
               onChange={e => setAccountId(e.target.value)}
               className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none"
-              style={{ borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' }}
+              style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}
             >
               <option value="">Select account…</option>
               {accounts.map(a => (
@@ -113,7 +123,7 @@ export function IssueCardPage() {
 
           {/* Card type */}
           <div className="mb-6">
-            <p className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-3" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+            <p className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-3" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
               Card type
             </p>
             <div className="grid grid-cols-3 gap-3">
@@ -139,6 +149,38 @@ export function IssueCardPage() {
             </div>
           </div>
 
+          {/* Card PIN */}
+          <div className="mb-6">
+            <p className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-3" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
+              Card PIN
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              <input
+                type="password"
+                inputMode="numeric"
+                maxLength={4}
+                value={pin}
+                onChange={e => setPin(e.target.value.replace(/\D/g, ''))}
+                placeholder="4-digit PIN"
+                className="px-3 py-2.5 rounded-lg border text-sm outline-none tracking-[0.3em]"
+                style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: '"Geist Mono", monospace' }}
+              />
+              <input
+                type="password"
+                inputMode="numeric"
+                maxLength={4}
+                value={confirmPin}
+                onChange={e => setConfirmPin(e.target.value.replace(/\D/g, ''))}
+                placeholder="Confirm PIN"
+                className="px-3 py-2.5 rounded-lg border text-sm outline-none tracking-[0.3em]"
+                style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: '"Geist Mono", monospace' }}
+              />
+            </div>
+            <p className="text-[11px] mt-2" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
+              You'll need this PIN to freeze or unfreeze the card.
+            </p>
+          </div>
+
           {error && <ErrorBanner message={error} className="mb-4" />}
 
           <div className="flex gap-3">
@@ -146,7 +188,7 @@ export function IssueCardPage() {
               type="button"
               onClick={() => navigate('/cards')}
               className="flex-1 py-2.5 rounded-lg text-sm font-medium border"
-              style={{ borderColor: '#E5E2D9', color: '#5C6470', backgroundColor: '#fff', fontFamily: 'Geist, sans-serif' }}
+              style={{ borderColor: 'var(--c-border)', color: 'var(--c-text-2)', backgroundColor: 'var(--c-surface)', fontFamily: 'Geist, sans-serif' }}
             >
               {t.cancel}
             </button>
@@ -154,7 +196,7 @@ export function IssueCardPage() {
               type="submit"
               disabled={mutation.isPending}
               className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
-              style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+              style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
             >
               {mutation.isPending && <Spinner size="sm" className="text-white" />}
               Issue card

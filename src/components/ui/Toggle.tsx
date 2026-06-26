@@ -21,7 +21,7 @@ export function Toggle({ checked, onChange, disabled = false, label }: TogglePro
         <div
           className="w-11 h-6 rounded-full transition-colors duration-200"
           style={{
-            backgroundColor: checked ? '#0F2A47' : '#E5E2D9',
+            backgroundColor: checked ? '#0F2A47' : 'var(--c-border)',
           }}
         />
         <div
@@ -32,7 +32,7 @@ export function Toggle({ checked, onChange, disabled = false, label }: TogglePro
         />
       </div>
       {label && (
-        <span className="text-sm" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+        <span className="text-sm" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
           {label}
         </span>
       )}

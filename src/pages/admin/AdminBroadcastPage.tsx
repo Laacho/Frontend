@@ -30,7 +30,7 @@ export function AdminBroadcastPage() {
     mutation.mutate();
   }
 
-  const inputStyle = { borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' };
+  const inputStyle = { borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' };
 
   return (
     <div className="animate-bub-fade">
@@ -46,11 +46,11 @@ export function AdminBroadcastPage() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Form */}
         <div className="lg:col-span-3">
-          <div className="rounded-xl border p-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-            <h2 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+          <div className="rounded-xl border p-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+            <h2 className="text-xl font-semibold mb-1" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               Broadcast notification
             </h2>
-            <p className="text-sm mb-4" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+            <p className="text-sm mb-4" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
               This sends a notification to every user in the system.
             </p>
 
@@ -78,11 +78,11 @@ export function AdminBroadcastPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Title</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Title</label>
                 <input type="text" value={title} onChange={e => setTitle(e.target.value)} placeholder="System announcement" className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={inputStyle} />
               </div>
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Message</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Message</label>
                 <textarea value={message} onChange={e => setMessage(e.target.value)} rows={5} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none resize-none" style={inputStyle} />
               </div>
 
@@ -93,7 +93,7 @@ export function AdminBroadcastPage() {
                   onChange={e => setConfirmed(e.target.checked)}
                   className="mt-0.5"
                 />
-                <span className="text-sm" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                <span className="text-sm" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                   I understand this will be sent to all users and cannot be undone.
                 </span>
               </label>
@@ -102,7 +102,7 @@ export function AdminBroadcastPage() {
                 type="submit"
                 disabled={mutation.isPending || !confirmed}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60"
-                style={{ backgroundColor: '#A8362F', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+                style={{ backgroundColor: '#A8362F', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
               >
                 {mutation.isPending && <Spinner size="sm" className="text-white" />}
                 Broadcast now
@@ -113,8 +113,8 @@ export function AdminBroadcastPage() {
 
         {/* Right panel */}
         <div className="lg:col-span-2">
-          <div className="rounded-xl border p-5" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-            <p className="text-xs font-semibold mb-3" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+          <div className="rounded-xl border p-5" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+            <p className="text-xs font-semibold mb-3" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
               DELIVERY ESTIMATE
             </p>
             <div className="space-y-2 mb-5">
@@ -123,18 +123,18 @@ export function AdminBroadcastPage() {
                 { label: 'Channels', value: 'IN_APP + EMAIL' },
                 { label: 'Estimated delivery', value: '< 5 minutes' },
               ].map(row => (
-                <div key={row.label} className="flex justify-between py-2 border-b" style={{ borderColor: '#EFEDE6' }}>
-                  <span className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>{row.label}</span>
-                  <span className="text-xs font-medium" style={{ color: '#14181F', fontFamily: '"Geist Mono", monospace' }}>{row.value}</span>
+                <div key={row.label} className="flex justify-between py-2 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+                  <span className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>{row.label}</span>
+                  <span className="text-xs font-medium" style={{ color: 'var(--c-text)', fontFamily: '"Geist Mono", monospace' }}>{row.value}</span>
                 </div>
               ))}
             </div>
 
-            <p className="text-xs font-semibold mb-3" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+            <p className="text-xs font-semibold mb-3" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
               RECENT BROADCASTS
             </p>
-            <div className="p-4 rounded-lg text-center" style={{ backgroundColor: '#F4F2EC' }}>
-              <p className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+            <div className="p-4 rounded-lg text-center" style={{ backgroundColor: 'var(--c-bg)' }}>
+              <p className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 No broadcast history available
               </p>
             </div>

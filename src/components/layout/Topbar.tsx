@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { MoonStar, Sun } from 'lucide-react';
 import { notificationsApi } from '../../api/notifications';
+import { useTheme } from '../../hooks/useTheme';
 
 function BellIcon() {
   return (
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
       <path d="M10 2C7.24 2 5 4.24 5 7v4.5L3.5 13h13l-1.5-1.5V7C15 4.24 12.76 2 10 2z" />
       <path d="M8.5 13.5a1.5 1.5 0 003 0" />
-    </svg>
-  );
-}
-
-function GearIcon() {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-5 h-5">
-      <circle cx="10" cy="10" r="3" />
-      <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.34 4.34l1.42 1.42M14.24 14.24l1.42 1.42M4.34 15.66l1.42-1.42M14.24 5.76l1.42-1.42" />
     </svg>
   );
 }
@@ -43,6 +36,7 @@ const routeTitles: Record<string, { breadcrumb: string; title: string }> = {
 export function Topbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { theme, toggle } = useTheme();
   const [search, setSearch] = useState('');
 
   // Drive the badge from react-query so marking notifications read (which
@@ -67,21 +61,21 @@ export function Topbar() {
       className="fixed top-0 right-0 h-16 flex items-center justify-between px-6 border-b z-30"
       style={{
         left: '248px',
-        backgroundColor: '#F4F2EC',
-        borderColor: '#E5E2D9',
+        backgroundColor: 'var(--c-bg)',
+        borderColor: 'var(--c-border)',
       }}
     >
       {/* Breadcrumb + Title */}
       <div>
         <p
           className="text-[10px] tracking-[0.12em] uppercase mb-0.5"
-          style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}
+          style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}
         >
           {routeInfo.breadcrumb}
         </p>
         <h1
           className="text-xl font-semibold leading-tight"
-          style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+          style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
         >
           {routeInfo.title}
         </h1>
@@ -92,14 +86,14 @@ export function Topbar() {
         <div
           className="relative flex items-center"
           style={{
-            backgroundColor: '#fff',
-            border: '1px solid #E5E2D9',
+            backgroundColor: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
             borderRadius: '7px',
           }}
         >
           <svg
             className="absolute left-3 w-4 h-4 pointer-events-none"
-            style={{ color: '#8A8F99' }}
+            style={{ color: 'var(--c-text-muted)' }}
             viewBox="0 0 16 16"
             fill="none"
             stroke="currentColor"
@@ -114,14 +108,14 @@ export function Topbar() {
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="pl-9 pr-3 py-1.5 text-sm bg-transparent outline-none w-48"
-            style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}
+            style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}
           />
         </div>
 
         <button
           onClick={() => navigate('/notifications')}
-          className="relative p-2 rounded-lg hover:bg-[#E5E2D9] transition-colors"
-          style={{ color: '#5C6470' }}
+          className="relative p-2 rounded-lg hover:bg-[var(--c-border)] transition-colors"
+          style={{ color: 'var(--c-text-2)' }}
           aria-label="Notifications"
         >
           <BellIcon />
@@ -136,12 +130,13 @@ export function Topbar() {
         </button>
 
         <button
-          onClick={() => navigate('/settings')}
-          className="p-2 rounded-lg hover:bg-[#E5E2D9] transition-colors"
-          style={{ color: '#5C6470' }}
-          aria-label="Settings"
+          onClick={toggle}
+          className="p-2 rounded-lg hover:bg-[var(--c-border)] transition-colors"
+          style={{ color: 'var(--c-text-2)' }}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+          title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
         >
-          <GearIcon />
+          {theme === 'dark' ? <Sun className="w-5 h-5" /> : <MoonStar className="w-5 h-5" />}
         </button>
       </div>
     </header>

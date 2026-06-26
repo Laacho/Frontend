@@ -42,16 +42,16 @@ export function Modal({
       />
       <div
         className="relative z-10 w-full max-w-md mx-4 rounded-xl border p-6"
-        style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+        style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
       >
         <h2
           className="text-xl font-semibold mb-3"
-          style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+          style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
         >
           {title}
         </h2>
         {children && (
-          <div className="mb-6 text-sm" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+          <div className="mb-6 text-sm" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
             {children}
           </div>
         )}
@@ -60,9 +60,9 @@ export function Modal({
             onClick={onClose}
             className="px-4 py-2 rounded-lg text-sm font-medium border transition-colors"
             style={{
-              borderColor: '#E5E2D9',
-              color: '#14181F',
-              backgroundColor: '#fff',
+              borderColor: 'var(--c-border)',
+              color: 'var(--c-text)',
+              backgroundColor: 'var(--c-surface)',
               fontFamily: 'Geist, sans-serif',
             }}
           >
@@ -75,7 +75,7 @@ export function Modal({
               className="px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-50"
               style={{
                 backgroundColor: variant === 'danger' ? '#A8362F' : '#0F2A47',
-                color: '#fff',
+                color: 'var(--c-on-brand)',
                 fontFamily: 'Geist, sans-serif',
               }}
             >

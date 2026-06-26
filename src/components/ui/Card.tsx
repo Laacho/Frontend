@@ -17,7 +17,7 @@ export function Card({ children, className = '', padding = 'md' }: CardProps) {
   return (
     <div
       className={`rounded-[10px] border ${paddingClass} ${className}`}
-      style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+      style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
     >
       {children}
     </div>

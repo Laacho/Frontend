@@ -72,7 +72,7 @@ export function TwoFAVerifyPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4" style={{ backgroundColor: '#F4F2EC' }}>
+    <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4" style={{ backgroundColor: 'var(--c-bg)' }}>
       <div className="flex items-center gap-3 mb-8">
         <div
           className="w-9 h-9 flex items-center justify-center rounded border font-bold text-lg"
@@ -80,18 +80,18 @@ export function TwoFAVerifyPage() {
         >
           B
         </div>
-        <span style={{ fontFamily: 'Fraunces, serif', color: '#14181F', fontSize: '20px' }}>
+        <span style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)', fontSize: '20px' }}>
           Balkan United Bank
         </span>
       </div>
 
       <div
         className="w-full max-w-sm rounded-xl border p-8 text-center"
-        style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}
+        style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}
       >
         <div
           className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4"
-          style={{ backgroundColor: '#F4F2EC', border: '1px solid #E5E2D9' }}
+          style={{ backgroundColor: 'var(--c-bg)', border: '1px solid var(--c-border)' }}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="#0F2A47" strokeWidth="1.5" className="w-6 h-6">
             <rect x="3" y="11" width="18" height="11" rx="2" />
@@ -101,11 +101,11 @@ export function TwoFAVerifyPage() {
 
         <h1
           className="text-2xl font-medium mb-2"
-          style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+          style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
         >
           Verify your identity
         </h1>
-        <p className="text-sm mb-8" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+        <p className="text-sm mb-8" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
           Enter the 6-digit code from your authenticator app.
         </p>
 
@@ -132,9 +132,9 @@ export function TwoFAVerifyPage() {
                 onKeyDown={e => handleKeyDown(i, e)}
                 className="w-12 h-14 text-center text-xl font-semibold rounded-lg border outline-none focus:border-[#0F2A47] transition-colors"
                 style={{
-                  borderColor: d ? '#0F2A47' : '#E5E2D9',
-                  backgroundColor: '#fff',
-                  color: '#14181F',
+                  borderColor: d ? '#0F2A47' : 'var(--c-border)',
+                  backgroundColor: 'var(--c-surface)',
+                  color: 'var(--c-text)',
                   fontFamily: '"Geist Mono", monospace',
                 }}
               />
@@ -145,7 +145,7 @@ export function TwoFAVerifyPage() {
             type="submit"
             disabled={loading || digits.some(d => !d)}
             className="w-full py-2.5 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-opacity disabled:opacity-60"
-            style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+            style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
           >
             {loading && <Spinner size="sm" className="text-white" />}
             Verify and continue

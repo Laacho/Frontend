@@ -26,7 +26,7 @@ export function PageSpinner() {
     <div className="flex items-center justify-center min-h-64">
       <div className="flex flex-col items-center gap-3">
         <Spinner size="lg" className="text-[#C8A878]" />
-        <span className="text-sm text-[#5C6470]" style={{ fontFamily: 'Geist, sans-serif' }}>Loading…</span>
+        <span className="text-sm text-[var(--c-text-2)]" style={{ fontFamily: 'Geist, sans-serif' }}>Loading…</span>
       </div>
     </div>
   );

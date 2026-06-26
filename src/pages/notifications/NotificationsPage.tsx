@@ -9,11 +9,11 @@ import { useLang } from '../../hooks/useLang';
 
 function ChannelBadge({ channel }: { channel: string }) {
   const colors: Record<string, { bg: string; fg: string }> = {
-    IN_APP: { bg: '#F4F2EC', fg: '#5C6470' },
+    IN_APP: { bg: 'var(--c-bg)', fg: 'var(--c-text-2)' },
     EMAIL: { bg: '#E3F2EA', fg: '#1F7A4D' },
     SMS: { bg: '#FBF1E2', fg: '#B5781E' },
   };
-  const c = colors[channel] || { bg: '#EFEDE6', fg: '#5C6470' };
+  const c = colors[channel] || { bg: 'var(--c-surface-2)', fg: 'var(--c-text-2)' };
   return (
     <span
       className="text-[10px] px-1.5 py-0.5 rounded font-medium"
@@ -28,12 +28,12 @@ function NotifIcon({ eventType }: { eventType: string }) {
   const type = (eventType || '').toLowerCase();
   const color = type.includes('fail') || type.includes('error') ? '#A8362F'
     : type.includes('success') || type.includes('complet') ? '#1F7A4D'
-    : '#5C6470';
+    : 'var(--c-text-2)';
 
   return (
     <div
       className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
-      style={{ backgroundColor: '#F4F2EC' }}
+      style={{ backgroundColor: 'var(--c-bg)' }}
     >
       <svg viewBox="0 0 16 16" fill="none" stroke={color} strokeWidth="1.5" className="w-4 h-4">
         <path d="M10 2C7.515 2 5.5 4.015 5.5 6.5v3.5L4 11.5h12l-1.5-1.5V6.5C14.5 4.015 12.485 2 10 2z" />
@@ -85,9 +85,9 @@ export function NotificationsPage() {
                 onClick={() => setChannelFilter(ch)}
                 className="px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors"
                 style={{
-                  borderColor: channelFilter === ch ? '#0F2A47' : '#E5E2D9',
-                  backgroundColor: channelFilter === ch ? '#0F2A47' : '#fff',
-                  color: channelFilter === ch ? '#fff' : '#5C6470',
+                  borderColor: channelFilter === ch ? '#0F2A47' : 'var(--c-border)',
+                  backgroundColor: channelFilter === ch ? '#0F2A47' : 'var(--c-surface)',
+                  color: channelFilter === ch ? 'var(--c-surface)' : 'var(--c-text-2)',
                   fontFamily: '"Geist Mono", monospace',
                 }}
               >
@@ -120,16 +120,16 @@ export function NotificationsPage() {
       ) : filtered.length === 0 ? (
         <EmptyState title={t.noNotifications} description="You're all caught up. Notifications will appear here." />
       ) : (
-        <div className="rounded-xl border overflow-hidden" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+        <div className="rounded-xl border overflow-hidden" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
           {filtered.map((n) => {
             const isUnread = n.status !== 'READ';
             return (
               <div
                 key={n.id}
-                className="flex items-start gap-4 px-5 py-4 border-b last:border-0 cursor-pointer hover:bg-[#FAF8F2] transition-colors"
+                className="flex items-start gap-4 px-5 py-4 border-b last:border-0 cursor-pointer hover:bg-[var(--c-surface-alt)] transition-colors"
                 style={{
-                  borderColor: '#EFEDE6',
-                  backgroundColor: isUnread ? '#FAF8F2' : '#fff',
+                  borderColor: 'var(--c-surface-2)',
+                  backgroundColor: isUnread ? 'var(--c-surface-alt)' : 'var(--c-surface)',
                 }}
                 onClick={() => isUnread && markReadMutation.mutate(n.id)}
               >
@@ -145,30 +145,30 @@ export function NotificationsPage() {
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-                    <p className="text-sm font-medium" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+                    <p className="text-sm font-medium" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
                       {n.title}
                     </p>
                     <span
                       className="text-[10px] px-1.5 py-0.5 rounded"
-                      style={{ backgroundColor: '#EFEDE6', color: '#5C6470', fontFamily: '"Geist Mono", monospace' }}
+                      style={{ backgroundColor: 'var(--c-surface-2)', color: 'var(--c-text-2)', fontFamily: '"Geist Mono", monospace' }}
                     >
                       {n.eventType}
                     </span>
                   </div>
-                  <p className="text-xs leading-relaxed" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                  <p className="text-xs leading-relaxed" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                     {n.message}
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3 flex-shrink-0">
                   <ChannelBadge channel={n.channel} />
-                  <span className="text-[11px]" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+                  <span className="text-[11px]" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
                     {formatRelativeTime(n.createdAt)}
                   </span>
                   <button
                     onClick={e => { e.stopPropagation(); deleteMutation.mutate(n.id); }}
-                    className="p-1 rounded hover:bg-[#EFEDE6] transition-colors"
-                    style={{ color: '#8A8F99' }}
+                    className="p-1 rounded hover:bg-[var(--c-surface-2)] transition-colors"
+                    style={{ color: 'var(--c-text-muted)' }}
                     aria-label="Delete notification"
                   >
                     <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5">

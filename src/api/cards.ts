@@ -12,13 +12,18 @@ export const cardsApi = {
     return response.data;
   },
 
-  create: async (data: { accountId: string; cardType: string }): Promise<CardResponse> => {
+  create: async (data: { accountId: string; cardType: string; pin: string }): Promise<CardResponse> => {
     const response = await apiClient.post('/cards', data);
     return response.data;
   },
 
-  updateStatus: async (id: string, status: string, reason: string): Promise<CardResponse> => {
-    const response = await apiClient.patch(`/cards/${id}/status`, { status, reason });
+  updateStatus: async (id: string, status: string, reason: string, pin: string): Promise<CardResponse> => {
+    const response = await apiClient.patch(`/cards/${id}/status`, { status, reason, pin });
+    return response.data;
+  },
+
+  changePin: async (id: string, oldPin: string | null, newPin: string): Promise<CardResponse> => {
+    const response = await apiClient.put(`/cards/${id}/pin`, { oldPin, newPin });
     return response.data;
   },
 

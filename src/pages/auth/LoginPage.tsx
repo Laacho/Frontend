@@ -33,7 +33,7 @@ export function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#F4F2EC' }}>
+    <div className="min-h-screen flex" style={{ backgroundColor: 'var(--c-bg)' }}>
       {/* Left brand panel */}
       <div
         className="hidden lg:flex lg:w-[52%] flex-col justify-between p-12"
@@ -92,20 +92,20 @@ export function LoginPage() {
             >
               B
             </div>
-            <span style={{ fontFamily: 'Fraunces, serif', color: '#14181F', fontSize: '16px' }}>
+            <span style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)', fontSize: '16px' }}>
               Balkan United Bank
             </span>
           </div>
 
           <p
             className="mb-1 text-[11px] tracking-[0.14em] uppercase"
-            style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}
+            style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}
           >
             {t.signIn}
           </p>
           <h1
             className="mb-8"
-            style={{ fontFamily: 'Fraunces, serif', fontSize: '34px', fontWeight: 400, color: '#14181F', letterSpacing: '-0.3px' }}
+            style={{ fontFamily: 'Fraunces, serif', fontSize: '34px', fontWeight: 400, color: 'var(--c-text)', letterSpacing: '-0.3px' }}
           >
             {t.welcomeBack}
           </h1>
@@ -129,7 +129,7 @@ export function LoginPage() {
             <div>
               <label
                 className="block text-xs font-medium mb-1.5"
-                style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+                style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
               >
                 {t.username}
               </label>
@@ -141,9 +141,9 @@ export function LoginPage() {
                 autoComplete="username"
                 className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none transition-colors focus:border-[#0F2A47]"
                 style={{
-                  borderColor: '#E5E2D9',
-                  backgroundColor: '#fff',
-                  color: '#14181F',
+                  borderColor: 'var(--c-border)',
+                  backgroundColor: 'var(--c-surface)',
+                  color: 'var(--c-text)',
                   fontFamily: 'Geist, sans-serif',
                 }}
                 placeholder="your.username"
@@ -154,7 +154,7 @@ export function LoginPage() {
               <div className="flex items-center justify-between mb-1.5">
                 <label
                   className="text-xs font-medium"
-                  style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+                  style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
                 >
                   {t.password}
                 </label>
@@ -175,9 +175,9 @@ export function LoginPage() {
                   autoComplete="current-password"
                   className="w-full px-3 py-2.5 pr-10 rounded-lg border text-sm outline-none transition-colors focus:border-[#0F2A47]"
                   style={{
-                    borderColor: '#E5E2D9',
-                    backgroundColor: '#fff',
-                    color: '#14181F',
+                    borderColor: 'var(--c-border)',
+                    backgroundColor: 'var(--c-surface)',
+                    color: 'var(--c-text)',
                     fontFamily: 'Geist, sans-serif',
                   }}
                   placeholder="••••••••"
@@ -186,7 +186,7 @@ export function LoginPage() {
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
-                  style={{ color: '#8A8F99' }}
+                  style={{ color: 'var(--c-text-muted)' }}
                 >
                   {showPassword ? (
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
@@ -210,7 +210,7 @@ export function LoginPage() {
               className="w-full py-2.5 rounded-lg text-sm font-medium transition-opacity disabled:opacity-60 mt-2 flex items-center justify-center gap-2"
               style={{
                 backgroundColor: '#0F2A47',
-                color: '#fff',
+                color: 'var(--c-on-brand)',
                 fontFamily: 'Geist, sans-serif',
               }}
             >
@@ -220,12 +220,12 @@ export function LoginPage() {
           </form>
 
           <div className="flex items-center gap-3 my-6">
-            <div className="flex-1 h-px" style={{ backgroundColor: '#E5E2D9' }} />
-            <span className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>OR</span>
-            <div className="flex-1 h-px" style={{ backgroundColor: '#E5E2D9' }} />
+            <div className="flex-1 h-px" style={{ backgroundColor: 'var(--c-border)' }} />
+            <span className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>OR</span>
+            <div className="flex-1 h-px" style={{ backgroundColor: 'var(--c-border)' }} />
           </div>
 
-          <p className="text-center text-sm" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+          <p className="text-center text-sm" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
             New here?{' '}
             <Link
               to="/register"

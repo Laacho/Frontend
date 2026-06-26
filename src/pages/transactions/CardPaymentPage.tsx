@@ -68,20 +68,20 @@ export function CardPaymentPage() {
     mutation.mutate();
   }
 
-  const inputStyle = { borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' };
+  const inputStyle = { borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' };
 
   return (
     <div className="animate-bub-fade">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Form */}
         <div className="lg:col-span-3">
-          <div className="rounded-xl border p-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+          <div className="rounded-xl border p-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
             {error && <ErrorBanner message={error} className="mb-4" />}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Card selector */}
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                   Card
                 </label>
                 <select value={cardId} onChange={e => setCardId(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={{ ...inputStyle, fontFamily: '"Geist Mono", monospace' }}>
@@ -96,11 +96,11 @@ export function CardPaymentPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div className="col-span-2">
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>{t.amount}</label>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>{t.amount}</label>
                   <input type="number" value={amount} onChange={e => setAmount(e.target.value)} min="0.01" step="0.01" placeholder="0.00" className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={{ ...inputStyle, fontFamily: '"Geist Mono", monospace' }} />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Currency</label>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Currency</label>
                   <select value={currency} onChange={e => setCurrency(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={{ ...inputStyle, fontFamily: '"Geist Mono", monospace' }}>
                     <option>BGN</option><option>EUR</option><option>USD</option>
                   </select>
@@ -108,34 +108,34 @@ export function CardPaymentPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Merchant name</label>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Merchant name</label>
                 <input type="text" value={merchantName} onChange={e => setMerchantName(e.target.value)} placeholder="e.g. LIDL BULGARIA EAD" className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={inputStyle} />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Category</label>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Category</label>
                   <select value={merchantCategory} onChange={e => setMerchantCategory(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={inputStyle}>
                     {MERCHANT_CATEGORIES.map(c => <option key={c}>{c}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>Terminal ID</label>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>Terminal ID</label>
                   <input type="text" value={terminalId} onChange={e => setTerminalId(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={{ ...inputStyle, fontFamily: '"Geist Mono", monospace' }} />
                 </div>
               </div>
 
-              <div className="p-3 rounded-lg" style={{ backgroundColor: '#F4F2EC', border: '1px solid #E5E2D9' }}>
-                <p className="text-[11px]" style={{ color: '#5C6470', fontFamily: '"Geist Mono", monospace' }}>
+              <div className="p-3 rounded-lg" style={{ backgroundColor: 'var(--c-bg)', border: '1px solid var(--c-border)' }}>
+                <p className="text-[11px]" style={{ color: 'var(--c-text-2)', fontFamily: '"Geist Mono", monospace' }}>
                   DEV NOTE: This simulates a POS terminal. In production, card payments are initiated by merchants, not cardholders.
                 </p>
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => navigate(-1)} className="flex-1 py-2.5 rounded-lg text-sm font-medium border" style={{ borderColor: '#E5E2D9', color: '#5C6470', backgroundColor: '#fff', fontFamily: 'Geist, sans-serif' }}>
+                <button type="button" onClick={() => navigate(-1)} className="flex-1 py-2.5 rounded-lg text-sm font-medium border" style={{ borderColor: 'var(--c-border)', color: 'var(--c-text-2)', backgroundColor: 'var(--c-surface)', fontFamily: 'Geist, sans-serif' }}>
                   {t.cancel}
                 </button>
-                <button type="submit" disabled={mutation.isPending} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60" style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}>
+                <button type="submit" disabled={mutation.isPending} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60" style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}>
                   {mutation.isPending && <Spinner size="sm" className="text-white" />}
                   Process payment
                 </button>
@@ -146,32 +146,32 @@ export function CardPaymentPage() {
 
         {/* Receipt preview */}
         <div className="lg:col-span-2">
-          <div className="rounded-xl border p-5" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-            <h3 className="text-sm font-semibold mb-4" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+          <div className="rounded-xl border p-5" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+            <h3 className="text-sm font-semibold mb-4" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               Receipt preview
             </h3>
             <div
               className="p-4 rounded-lg text-[11px] leading-relaxed"
-              style={{ backgroundColor: '#F4F2EC', fontFamily: '"Geist Mono", monospace', color: '#14181F' }}
+              style={{ backgroundColor: 'var(--c-bg)', fontFamily: '"Geist Mono", monospace', color: 'var(--c-text)' }}
             >
               <div className="text-center mb-3">
                 <p>BALKAN UNITED BANK</p>
-                <p style={{ color: '#8A8F99' }}>POS TERMINAL RECEIPT</p>
-                <p style={{ color: '#8A8F99' }}>{'─'.repeat(28)}</p>
+                <p style={{ color: 'var(--c-text-muted)' }}>POS TERMINAL RECEIPT</p>
+                <p style={{ color: 'var(--c-text-muted)' }}>{'─'.repeat(28)}</p>
               </div>
               <p>DATE: {formatDateTime(now.toISOString())}</p>
               <p>TERM: {terminalId || 'TERM-???'}</p>
-              <div className="my-2" style={{ borderTop: '1px dashed #E5E2D9' }} />
+              <div className="my-2" style={{ borderTop: '1px dashed var(--c-border)' }} />
               <p>MERCHANT: {merchantName || '???'}</p>
               <p>CATEGORY: {merchantCategory}</p>
-              <div className="my-2" style={{ borderTop: '1px dashed #E5E2D9' }} />
+              <div className="my-2" style={{ borderTop: '1px dashed var(--c-border)' }} />
               <p>CARD: {selectedCard?.maskedPan || '???? **** **** ????'}</p>
               <p>TYPE: {selectedCard?.cardType || '???'}</p>
-              <div className="my-2" style={{ borderTop: '1px dashed #E5E2D9' }} />
-              <p className="text-right font-semibold" style={{ color: '#14181F', fontSize: '13px' }}>
+              <div className="my-2" style={{ borderTop: '1px dashed var(--c-border)' }} />
+              <p className="text-right font-semibold" style={{ color: 'var(--c-text)', fontSize: '13px' }}>
                 {amount ? formatAmount(parseFloat(amount)) : '0.00'} {currency}
               </p>
-              <div className="text-center mt-3" style={{ color: '#8A8F99' }}>
+              <div className="text-center mt-3" style={{ color: 'var(--c-text-muted)' }}>
                 <p>AWAITING APPROVAL</p>
               </div>
             </div>

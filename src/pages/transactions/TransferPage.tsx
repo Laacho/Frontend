@@ -60,19 +60,19 @@ export function TransferPage() {
     mutation.mutate();
   }
 
-  const inputStyle = { borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' };
+  const inputStyle = { borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' };
 
   return (
     <div className="animate-bub-fade">
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
         {/* Form */}
         <div className="lg:col-span-3">
-          <div className="rounded-xl border p-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+          <div className="rounded-xl border p-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
             {error && <ErrorBanner message={error} className="mb-4" />}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                   {t.from}
                 </label>
                 <select value={sourceId} onChange={e => setSourceId(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={inputStyle}>
@@ -86,7 +86,7 @@ export function TransferPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                   {t.to}
                 </label>
                 <select value={destId} onChange={e => setDestId(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={inputStyle}>
@@ -101,7 +101,7 @@ export function TransferPage() {
 
               <div className="grid grid-cols-3 gap-3">
                 <div className="col-span-2">
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                     {t.amount}
                   </label>
                   <input
@@ -116,7 +116,7 @@ export function TransferPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+                  <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                     Currency
                   </label>
                   <select value={currency} onChange={e => setCurrency(e.target.value)} className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none" style={{ ...inputStyle, fontFamily: '"Geist Mono", monospace' }}>
@@ -128,8 +128,8 @@ export function TransferPage() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
-                  {t.description} <span style={{ color: '#8A8F99' }}>(optional)</span>
+                <label className="block text-xs font-medium mb-1.5" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
+                  {t.description} <span style={{ color: 'var(--c-text-muted)' }}>(optional)</span>
                 </label>
                 <input
                   type="text"
@@ -156,10 +156,10 @@ export function TransferPage() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => navigate(-1)} className="flex-1 py-2.5 rounded-lg text-sm font-medium border" style={{ borderColor: '#E5E2D9', color: '#5C6470', backgroundColor: '#fff', fontFamily: 'Geist, sans-serif' }}>
+                <button type="button" onClick={() => navigate(-1)} className="flex-1 py-2.5 rounded-lg text-sm font-medium border" style={{ borderColor: 'var(--c-border)', color: 'var(--c-text-2)', backgroundColor: 'var(--c-surface)', fontFamily: 'Geist, sans-serif' }}>
                   {t.cancel}
                 </button>
-                <button type="submit" disabled={mutation.isPending} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60" style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}>
+                <button type="submit" disabled={mutation.isPending} className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium disabled:opacity-60" style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}>
                   {mutation.isPending && <Spinner size="sm" className="text-white" />}
                   Send transfer
                 </button>
@@ -170,8 +170,8 @@ export function TransferPage() {
 
         {/* Summary panel */}
         <div className="lg:col-span-2">
-          <div className="rounded-xl border p-5 sticky top-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
-            <h3 className="text-sm font-semibold mb-4" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+          <div className="rounded-xl border p-5 sticky top-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
+            <h3 className="text-sm font-semibold mb-4" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               Transfer summary
             </h3>
 
@@ -184,9 +184,9 @@ export function TransferPage() {
                 { label: 'Total', value: amount ? `${formatAmount(parseFloat(amount))} ${currency}` : '—', mono: true },
                 { label: 'Executes', value: 'Immediately' },
               ].map(row => (
-                <div key={row.label} className="flex justify-between items-center py-2 border-b" style={{ borderColor: '#EFEDE6' }}>
-                  <span className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>{row.label}</span>
-                  <span className="text-sm font-medium" style={{ color: '#14181F', fontFamily: row.mono ? '"Geist Mono", monospace' : 'Geist, sans-serif' }}>
+                <div key={row.label} className="flex justify-between items-center py-2 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+                  <span className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>{row.label}</span>
+                  <span className="text-sm font-medium" style={{ color: 'var(--c-text)', fontFamily: row.mono ? '"Geist Mono", monospace' : 'Geist, sans-serif' }}>
                     {row.value}
                   </span>
                 </div>

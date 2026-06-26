@@ -18,7 +18,7 @@ export function getStatusColors(status: StatusString): StatusColors {
   if (['CLOSED', 'FAILED', 'DECLINED', 'REVERSED', 'EXPIRED', 'CANCELLED', 'TERMINATED'].includes(s)) {
     return { bg: '#FBEDEB', fg: '#A8362F' };
   }
-  return { bg: '#EFEDE6', fg: '#5C6470' };
+  return { bg: 'var(--c-surface-2)', fg: 'var(--c-text-2)' };
 }
 
 interface StatusBadgeProps {

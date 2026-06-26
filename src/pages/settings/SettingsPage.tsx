@@ -28,7 +28,7 @@ function ProfileTab() {
 
   return (
     <div>
-      <div className="flex items-center gap-4 mb-6 pb-6 border-b" style={{ borderColor: '#EFEDE6' }}>
+      <div className="flex items-center gap-4 mb-6 pb-6 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
         <div
           className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-semibold"
           style={{ backgroundColor: '#C8A878', color: '#0F2A47', fontFamily: 'Fraunces, serif' }}
@@ -36,12 +36,12 @@ function ProfileTab() {
           {initials}
         </div>
         <div>
-          <p className="text-lg font-semibold" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+          <p className="text-lg font-semibold" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
             {user?.username || 'User'}
           </p>
           <span
             className="text-xs px-2 py-0.5 rounded"
-            style={{ backgroundColor: '#EFEDE6', color: '#5C6470', fontFamily: '"Geist Mono", monospace' }}
+            style={{ backgroundColor: 'var(--c-surface-2)', color: 'var(--c-text-2)', fontFamily: '"Geist Mono", monospace' }}
           >
             {user?.role || 'USER'}
           </span>
@@ -49,18 +49,18 @@ function ProfileTab() {
       </div>
 
       <div className="space-y-3 mb-8">
-        <p className="text-[10px] tracking-[0.14em] uppercase font-semibold" style={{ color: '#8A8F99', fontFamily: '"Geist Mono", monospace' }}>
+        <p className="text-[10px] tracking-[0.14em] uppercase font-semibold" style={{ color: 'var(--c-text-muted)', fontFamily: '"Geist Mono", monospace' }}>
           Account details
         </p>
         {[
           { label: t.username, value: user?.username || '—', mono: true },
           { label: t.role, value: user?.role || 'USER', mono: true },
         ].map(row => (
-          <div key={row.label} className="flex justify-between items-center py-3 border-b" style={{ borderColor: '#EFEDE6' }}>
-            <span className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>{row.label}</span>
+          <div key={row.label} className="flex justify-between items-center py-3 border-b" style={{ borderColor: 'var(--c-surface-2)' }}>
+            <span className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>{row.label}</span>
             <span
               className="text-sm"
-              style={{ color: '#14181F', fontFamily: row.mono ? '"Geist Mono", monospace' : 'Geist, sans-serif' }}
+              style={{ color: 'var(--c-text)', fontFamily: row.mono ? '"Geist Mono", monospace' : 'Geist, sans-serif' }}
             >
               {row.value}
             </span>
@@ -68,7 +68,7 @@ function ProfileTab() {
         ))}
       </div>
 
-      <div className="border-t pt-6" style={{ borderColor: '#EFEDE6' }}>
+      <div className="border-t pt-6" style={{ borderColor: 'var(--c-surface-2)' }}>
         <p className="text-[10px] tracking-[0.14em] uppercase font-semibold mb-3" style={{ color: '#A8362F', fontFamily: '"Geist Mono", monospace' }}>
           DANGER ZONE
         </p>
@@ -107,7 +107,7 @@ function NotificationsTab() {
 
   return (
     <div>
-      <p className="text-sm mb-6" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+      <p className="text-sm mb-6" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
         Choose how you receive notifications from Balkan United Bank.
       </p>
 
@@ -129,13 +129,13 @@ function NotificationsTab() {
           <div
             key={item.key}
             className="flex items-center justify-between p-4 rounded-xl border"
-            style={{ borderColor: '#E5E2D9', backgroundColor: '#fff' }}
+            style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)' }}
           >
             <div>
-              <p className="text-sm font-medium mb-1" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+              <p className="text-sm font-medium mb-1" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
                 {item.title}
               </p>
-              <p className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+              <p className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
                 {item.description}
               </p>
             </div>
@@ -201,18 +201,18 @@ function SecurityTab() {
     }
   }
 
-  const inputStyle = { borderColor: '#E5E2D9', backgroundColor: '#fff', color: '#14181F', fontFamily: 'Geist, sans-serif' };
+  const inputStyle = { borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' };
 
   return (
     <div>
       {/* 2FA panel */}
-      <div className="mb-6 p-5 rounded-xl border" style={{ borderColor: '#E5E2D9', backgroundColor: '#fff' }}>
+      <div className="mb-6 p-5 rounded-xl border" style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)' }}>
         <div className="flex items-center justify-between mb-3">
           <div>
-            <p className="text-sm font-semibold" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+            <p className="text-sm font-semibold" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
               Two-factor authentication
             </p>
-            <p className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+            <p className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
               Adds an extra layer of security to your account.
             </p>
           </div>
@@ -226,7 +226,7 @@ function SecurityTab() {
           ) : (
             <span
               className="text-xs px-2 py-1 rounded-full font-medium"
-              style={{ backgroundColor: '#EFEDE6', color: '#5C6470', fontFamily: 'Geist, sans-serif' }}
+              style={{ backgroundColor: 'var(--c-surface-2)', color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}
             >
               Disabled
             </span>
@@ -238,15 +238,15 @@ function SecurityTab() {
           onMouseEnter={prefetch2FA}
           onFocus={prefetch2FA}
           className="px-4 py-2 rounded-lg text-sm font-medium border"
-          style={{ borderColor: '#E5E2D9', color: '#0F2A47', fontFamily: 'Geist, sans-serif' }}
+          style={{ borderColor: 'var(--c-border)', color: '#0F2A47', fontFamily: 'Geist, sans-serif' }}
         >
           {settings?.twoFactorEnabled ? 'Reconfigure 2FA' : 'Set up 2FA'}
         </button>
       </div>
 
       {/* Change password */}
-      <div className="p-5 rounded-xl border" style={{ borderColor: '#E5E2D9', backgroundColor: '#fff' }}>
-        <p className="text-sm font-semibold mb-4" style={{ color: '#14181F', fontFamily: 'Geist, sans-serif' }}>
+      <div className="p-5 rounded-xl border" style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)' }}>
+        <p className="text-sm font-semibold mb-4" style={{ color: 'var(--c-text)', fontFamily: 'Geist, sans-serif' }}>
           Change password
         </p>
 
@@ -264,7 +264,7 @@ function SecurityTab() {
             { label: 'Confirm new password', value: confirmPwd, setValue: setConfirmPwd, show: showConfirm, setShow: setShowConfirm },
           ].map(field => (
             <div key={field.label}>
-              <label className="block text-xs font-medium mb-1" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+              <label className="block text-xs font-medium mb-1" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
                 {field.label}
               </label>
               <div className="relative">
@@ -280,7 +280,7 @@ function SecurityTab() {
                   type="button"
                   onClick={() => field.setShow(!field.show)}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
-                  style={{ color: '#8A8F99' }}
+                  style={{ color: 'var(--c-text-muted)' }}
                 >
                   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-4 h-4">
                     <path d="M2 8s2-4 6-4 6 4 6 4-2 4-6 4-6-4-6-4z" />
@@ -294,7 +294,7 @@ function SecurityTab() {
             type="submit"
             disabled={submitting}
             className="w-full py-2.5 rounded-lg text-sm font-medium mt-2 disabled:opacity-60"
-            style={{ backgroundColor: '#0F2A47', color: '#fff', fontFamily: 'Geist, sans-serif' }}
+            style={{ backgroundColor: '#0F2A47', color: 'var(--c-on-brand)', fontFamily: 'Geist, sans-serif' }}
           >
             {submitting ? 'Updating…' : 'Update password'}
           </button>
@@ -309,7 +309,7 @@ function LanguageTab() {
 
   return (
     <div>
-      <p className="text-sm mb-6" style={{ color: '#5C6470', fontFamily: 'Geist, sans-serif' }}>
+      <p className="text-sm mb-6" style={{ color: 'var(--c-text-2)', fontFamily: 'Geist, sans-serif' }}>
         Choose the display language for Balkan United Bank.
       </p>
       <div className="grid grid-cols-2 gap-4">
@@ -322,15 +322,15 @@ function LanguageTab() {
             onClick={() => setLang(lng.code)}
             className="p-5 rounded-xl border-2 text-left transition-all"
             style={{
-              borderColor: lang === lng.code ? '#0F2A47' : '#E5E2D9',
-              backgroundColor: lang === lng.code ? '#F4F2EC' : '#fff',
+              borderColor: lang === lng.code ? '#0F2A47' : 'var(--c-border)',
+              backgroundColor: lang === lng.code ? 'var(--c-bg)' : 'var(--c-surface)',
             }}
           >
             <div className="text-2xl mb-3">{lng.flag}</div>
-            <p className="text-base font-semibold" style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}>
+            <p className="text-base font-semibold" style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}>
               {lng.label}
             </p>
-            <p className="text-xs" style={{ color: '#8A8F99', fontFamily: 'Geist, sans-serif' }}>
+            <p className="text-xs" style={{ color: 'var(--c-text-muted)', fontFamily: 'Geist, sans-serif' }}>
               {lng.sublabel}
             </p>
             {lang === lng.code && (
@@ -373,16 +373,16 @@ export function SettingsPage() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Left: Tab list */}
         <div className="lg:col-span-1">
-          <nav className="rounded-xl border overflow-hidden" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+          <nav className="rounded-xl border overflow-hidden" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium transition-colors border-b last:border-0"
                 style={{
-                  borderColor: '#EFEDE6',
-                  backgroundColor: activeTab === tab.id ? '#F4F2EC' : '#fff',
-                  color: activeTab === tab.id ? '#14181F' : '#5C6470',
+                  borderColor: 'var(--c-surface-2)',
+                  backgroundColor: activeTab === tab.id ? 'var(--c-bg)' : 'var(--c-surface)',
+                  color: activeTab === tab.id ? 'var(--c-text)' : 'var(--c-text-2)',
                   fontFamily: 'Geist, sans-serif',
                   borderLeft: activeTab === tab.id ? '2px solid #0F2A47' : '2px solid transparent',
                 }}
@@ -398,10 +398,10 @@ export function SettingsPage() {
 
         {/* Right: Tab content */}
         <div className="lg:col-span-3">
-          <div className="rounded-xl border p-6" style={{ backgroundColor: '#fff', borderColor: '#E5E2D9' }}>
+          <div className="rounded-xl border p-6" style={{ backgroundColor: 'var(--c-surface)', borderColor: 'var(--c-border)' }}>
             <h2
               className="text-lg font-semibold mb-6"
-              style={{ fontFamily: 'Fraunces, serif', color: '#14181F' }}
+              style={{ fontFamily: 'Fraunces, serif', color: 'var(--c-text)' }}
             >
               {tabLabels[activeTab]}
             </h2>
